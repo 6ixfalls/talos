@@ -190,18 +190,12 @@ func (ctrl *NfTablesChainConfigController) buildIngressChain(cfg *config.Machine
 					MatchLayer4: &network.NfTablesLayer4Match{
 						Protocol: nethelpers.ProtocolICMP,
 					},
-					MatchLimit: &network.NfTablesLimitMatch{
-						PacketRatePerSecond: 5,
-					},
 					AnonCounter: true,
 					Verdict:     pointer.To(nethelpers.VerdictAccept),
 				},
 				network.NfTablesRule{
 					MatchLayer4: &network.NfTablesLayer4Match{
 						Protocol: nethelpers.ProtocolICMPv6,
-					},
-					MatchLimit: &network.NfTablesLimitMatch{
-						PacketRatePerSecond: 5,
 					},
 					AnonCounter: true,
 					Verdict:     pointer.To(nethelpers.VerdictAccept),
